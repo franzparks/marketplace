@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
  * Is responsible for create/update/delete/get User information.
  */
 
-@Path(value = "/user")
+@Path(value = "/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Slf4j
 public class UserResource {
