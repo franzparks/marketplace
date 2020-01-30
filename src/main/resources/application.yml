@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: market
+    # H2 Web Console (H2ConsoleProperties)
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+        web-allow-others: false
+ribbon:
+  ServerListRefreshInterval: 1000
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+#H2 configuration.
+db:
+  driverClassName: org.h2.Driver
+  connUrl: jdbc:h2:./db-data/market;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
+  userName: sa
+  password:
+
+# HikariCP configuration.
+hikari:
+  autoCommit: false
+  connectionTimeOut: 300
+  idleTimeOut: 150
+  maxLifeTime: 150
+  minimumIdle: 150
+  maximumPoolSize: 5
+
+#Hibernate Configuration.
+hibernate:
+  hibernateDialect: org.hibernate.dialect.H2Dialect
+  showSQL: true
+  generateStatistics: false
+  hbm2ddl:
+    auto: update
