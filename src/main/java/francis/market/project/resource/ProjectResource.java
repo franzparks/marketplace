@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
 /**
  * Project resource class.
  */
-@Path("/project")
+@Path("/projects")
 @Produces(MediaType.APPLICATION_JSON)
 @Slf4j
 public class ProjectResource {
