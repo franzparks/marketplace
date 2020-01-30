@@ -90,14 +90,14 @@ public class ProjectResource {
      * @throws MarketException
      */
     @GET
-    @Path("/{ProjectId}")
+    @Path("/{projectId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response detail(@PathParam("ProjectId") String ProjectId) throws MarketException {
+    public Response detail(@PathParam("projectId") String projectId) throws MarketException {
         log.info("Processing Project projectDetails request for Id: {}", ProjectId);
         Project ProjectEntity;
         try {
             AuthenticationHelper.isRequestAuthenticated(SessionUser.getSessionUser());
-            ProjectEntity = ProjectService.projectDetails(ProjectId);
+            ProjectEntity = ProjectService.projectDetails(projectId);
         } catch (ProjectNotFoundException se) {
             log.error("Project not found", se);
             throw new MarketException(Response.Status.NOT_FOUND.getStatusCode(), se.getMessage());
@@ -155,14 +155,14 @@ public class ProjectResource {
      * @throws MarketException
      */
     @POST
-    @Path("/{ProjectId}/bid")
-    public Response bid(@PathParam("ProjectId") String ProjectId, @Valid BidVO bidVO) throws MarketException, URISyntaxException {
+    @Path("/{projectId}/bid")
+    public Response bid(@PathParam("projectId") String projectId, @Valid BidVO bidVO) throws MarketException, URISyntaxException {
         Bid bidEntity;
         try {
             AuthenticationHelper.isRequestAuthenticated(SessionUser.getSessionUser());
             bidEntity = ObjectMapperUtil.bidEntity(bidVO);
             bidEntity.setUser(SessionUser.getSessionUser());
-            bidEntity = ProjectService.bid(ProjectId, bidEntity);
+            bidEntity = ProjectService.bid(projectId, bidEntity);
         } catch (ProjectNotFoundException se) {
             log.error("Project not found: ", se);
             throw new MarketException(Response.Status.BAD_REQUEST.getStatusCode(), se.getMessage());
@@ -197,12 +197,12 @@ public class ProjectResource {
      * @throws MarketException
      */
     @GET
-    @Path("/{ProjectId}/bid")
-    public Response latestBid(@PathParam("ProjectId") String ProjectId) throws MarketException {
+    @Path("/{projectId}/bid")
+    public Response latestBid(@PathParam("projectId") String projectId) throws MarketException {
         Bid bid;
         try {
             AuthenticationHelper.isRequestAuthenticated(SessionUser.getSessionUser());
-            bid = ProjectService.getLatestBid(ProjectId);
+            bid = ProjectService.getLatestBid(projectId);
         } catch (AuthenticationFailedException ae) {
             log.error("Authentication failed: ", ae);
             throw new MarketException(Response.Status.UNAUTHORIZED.getStatusCode(), "Authentication failed.");
