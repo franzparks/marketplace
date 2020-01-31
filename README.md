@@ -16,9 +16,12 @@
 
 ## How to Run.
 
-``` mvn clean install```
+``` mvn clean install -DskipTest```
+
 ``` mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)```
+
 ``` docker build -t francis/market-place . ```
+
 ``` docker run -p 8080:8080 -t francis/market-place ```
 
 ## H2 console Access.
