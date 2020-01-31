@@ -93,7 +93,7 @@ public class ProjectResource {
     @Path("/{projectId}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response detail(@PathParam("projectId") String projectId) throws MarketException {
-        log.info("Processing Project projectDetails request for Id: {}", ProjectId);
+        log.info("Processing Project projectDetails request for Id: {}", projectId);
         Project ProjectEntity;
         try {
             AuthenticationHelper.isRequestAuthenticated(SessionUser.getSessionUser());
