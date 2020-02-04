@@ -25,9 +25,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     @Transactional
-    public Project create(Project Project) {
-        sessionFactory.getCurrentSession().save(Project);
-        return Project;
+    public Project create(Project project) {
+        sessionFactory.getCurrentSession().save(project);
+        return project;
     }
 
     @Override

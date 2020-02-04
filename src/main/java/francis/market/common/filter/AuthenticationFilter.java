@@ -35,8 +35,8 @@ public class AuthenticationFilter implements Filter {
 
     private static final List<String> AUTH_SKIP_URLS = new ArrayList<String>() {
         {
-            add("/user");
-            add("/user/login");
+            add("/users");
+            add("/users/login");
             add("/h2-console");
         }
     };
@@ -60,6 +60,7 @@ public class AuthenticationFilter implements Filter {
                     user.setEmail(tokens[0]);
                     user.setPassword(tokens[1]);
                     try {
+                        log.info("Decoded successfully, logging in with username: {}, password: {}", tokens[0], tokens[1]);
                         user = getUserService().login(user);
                         SessionUser.setSessionUser(user);
                     } catch (UserNotFoundException ex) {

@@ -16,6 +16,7 @@ import org.springframework.util.StringUtils;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -90,8 +91,26 @@ public class UserResource {
         return Response.status(Response.Status.OK).entity(
                 MarketResponse.builder()
                         .withStatusCode(Response.Status.OK.getStatusCode())
-                        .withMessage("Logged in successful.")
+                        .withMessage("Logged in successfully.")
                         .withUserVO(ObjectMapperUtil.userVO(userEntity))
+                        .build()
+        ).build();
+    }
+
+    /**
+     * Authenticate user against the system.
+     *
+     * @return Response.
+     */
+    @GET
+    @Path("/sanity-check")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response sanityCheck()  {
+        
+        return Response.status(Response.Status.OK).entity(
+                MarketResponse.builder()
+                        .withStatusCode(Response.Status.OK.getStatusCode())
+                        .withMessage("Application start successful.")
                         .build()
         ).build();
     }

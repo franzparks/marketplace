@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * ProjectService
+ * ProjectService has the business rule/logic
  */
 public interface ProjectService {
 

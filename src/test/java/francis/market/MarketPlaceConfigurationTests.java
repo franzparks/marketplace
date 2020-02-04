@@ -41,9 +41,9 @@ public class MarketPlaceConfigurationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void testGreeting() throws Exception {
+	public void testMarket() throws Exception {
 		ResponseEntity<String> entity = restTemplate
-				.getForEntity("http://localhost:" + this.port + "/", String.class);
+				.getForEntity("http://localhost:" + this.port + "/market/users/sanity-check", String.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 

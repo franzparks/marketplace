@@ -57,11 +57,11 @@ public class ProjectResource {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(@Valid ProjectVO ProjectVO) throws MarketException, URISyntaxException {
+    public Response create(@Valid ProjectVO projectVO) throws MarketException, URISyntaxException {
         Project ProjectEntity;
         try {
             AuthenticationHelper.isRequestAuthenticated(SessionUser.getSessionUser());
-            ProjectEntity = ObjectMapperUtil.ProjectEntity(ProjectVO);
+            ProjectEntity = ObjectMapperUtil.ProjectEntity(projectVO);
             ProjectEntity.setUser(SessionUser.getSessionUser());
             ProjectService.create(ProjectEntity);
         } catch (AuthenticationFailedException ae) {

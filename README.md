@@ -16,13 +16,9 @@
 
 ## How to Run.
 
-``` mvn clean install -DskipTest```
+``` mvn clean install```
 
-``` mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)```
-
-``` docker build -t francis/market-place . ```
-
-``` docker run -p 8080:8080 -t francis/market-place ```
+```mvn package  && java -jar target/market-place-0.1.0.jar```
 
 ## H2 console Access.
 ```http://localhost:8080/h2-console```

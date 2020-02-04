@@ -33,7 +33,7 @@ public final class ProjectVO {
     private String projectId;
     @NotBlank(message = "ProjectName should not be blank")
     private String projectName;
-    @NotBlank(message = "ProjectType should not be blank")
+    @NotBlank(message = "ProjectDesc should not be blank")
     private String projectDesc;
     private UserVO user;
     private BidVO currentLowestBid;
